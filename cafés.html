@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exalto | Marketplace</title>
+
+  <style>
+    :root {
+      --color1: #102b47;
+      --color2: #0d577b;
+      --color3: #088eb6;
+      --color4: #03d9f8;
+      --color5: #0ffff8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      color: #1e293b;
+    }
+
+    header {
+      background: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+     header img {
+      height: 60px;
+    }
+
+    nav a {
+      margin-right: 20px;
+      font-weight: bold;
+      color: var(--color1);
+      text-decoration: none;
+    }
+
+    .cart-btn {
+      background: var(--color3);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .cart {
+      position: fixed;
+      right: 20px;
+      top: 90px;
+      background: white;
+      width: 300px;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(27, 135, 197, 0.1);
+      display: none;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      background-color: var(--color3);
+      border-radius: 50px;
+      border-color: white;
+      font-size: 20px;
+      transform: scale(1.3);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: var(--color4);
+      color: white;
+      font-size: 11px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cart-total {
+      color: var(--color2);
+      font-size: 30px;
+      padding: 10px 10px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 { 
+      
+      text-align: center;
+      font-size: 25px;
+      color: white;
+      background-color: var(--color1);
+      max-width: 300px;
+      border-radius: 16px;
+      margin: 30px auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0px 10px 10px rgba(27, 135, 197, 0.1);
+      border-radius: 16px;
+      max-width: 300px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; 
+      transition: 0.3s;
+    }
+
+
+    .card img {
+      border-radius: 12px;
+      cursor: pointer;
+      max-height: 300px;
+    }
+
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card span {
+      display: block;
+      margin: 10px 10px;
+      font-size: 25px;
+      color: var(--color2);
+      font-weight: bold;
+    }
+
+    .card p {
+      text-align: left;
+      font-size: 14px;
+      margin: 10px 0;
+      color: #000000;
+    }
+
+    .card p strong {
+      font-weight: 600;
+      color: #102b47;
+    }
+
+
+    .span pre  {
+      font-weight: bold;
+      text-align: center;
+      margin: 30px 0;
+      color: var(--color4);
+    }
+
+    .qty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qty button {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      background: var(--color2);
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+
+    .whatsapp {
+      margin-top: 15px;
+      width: 100%;
+      padding: 12px;
+      background: #25D366;
+      border: none;
+      color: white;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      background-color: white;
+    }
+
+    .remove {
+      color: white;
+      font-size: 20px;
+      background-color: var(--color3);
+      border-color: var(--color3);
+      border-radius: 20px;
+
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="inicio.html">
+    <img src="logo_Exalto4.png" alt="Logo Exalto"  />
+  </a>
+  <nav>
+    <a href="inicio.html">Inicio</a>
+    <a href="cafes.html">Cafés</a>
+    <a href="kits.html">Kits</a>
+    <button class="cart-icon" onclick="toggleCart()">🛒
+    <span id="cart-count" class="cart-count">0</span> </button>
+</div>
+
+  </nav>
+</header>
+
+
+<section class="container">
+  <h2>Cafés</h2>
+    <div class="grid">
+
+    <!-- PRODUCTO TEMPLATE -->
+    <div class="card" data-name="Café 250g molido" data-price="26000">
+      <img src="cafe250.png" alt="Café 250g" onclick="openModal(this.src)">
+      <span>Café 250g molido</span>
+      <p>
+        <strong>Origen:</strong> Fredonia, Antioquia<br>
+        <strong>Altura:</strong> 1.880 m.s.n.m.<br>
+        <strong>Proceso:</strong> Honey<br>
+        <strong>Presentación:</strong> Molido
+      </p>
+        <span class="pre">$26.000</span>
+      <div class="qty">
+        <button onclick="changeQty(this,-1)">-</button>
+        <span class="count">0</span>
+        <button onclick="changeQty(this,1)">+</button>
+      </div>      
+    </div>
+
+    <div class="card" data-name="Café 250g grano" data-price="26000">
+      <img src="cafe250.png" alt="Café 250g" onclick="openModal(this.src)">
+      <span>Café 250g en grano</span>
+      <p>
+        <strong>Origen:</strong> Fredonia, Antioquia<br>
+        <strong>Altura:</strong> 1.880 m.s.n.m.<br>
+        <strong>Proceso:</strong> Honey<br>
+        <strong>Presentación:</strong> En grano
+      </p>
+        <span class="pre">$26.000</span>
+      <div class="qty">
+        <button onclick="changeQty(this,-1)">-</button>
+        <span class="count">0</span>
+        <button onclick="changeQty(this,1)">+</button>
+      </div>      
+    </div>
+
+    <div class="card" data-name="Café 500g molido" data-price="50000">
+      <img src="cafe250.png" alt="Café 500g" onclick="openModal(this.src)">
+      <span>Café 500g molido</span>
+      <p>
+        <strong>Origen:</strong> Fredonia, Antioquia<br>
+        <strong>Altura:</strong> 1.880 m.s.n.m.<br>
+        <strong>Proceso:</strong> Honey<br>
+        <strong>Presentación:</strong> Molido
+      </p>
+        <span class="pre">$50.000</span>
+      <div class="qty">
+        <button onclick="changeQty(this,-1)">-</button>
+        <span class="count">0</span>
+        <button onclick="changeQty(this,1)">+</button>
+      </div>      
+    </div>
+
+    <div class="card" data-name="Café 500g grano" data-price="50000">
+      <img src="cafe250.png" alt="Café 500g" onclick="openModal(this.src)">
+      <span>Café 500g en grano</span>
+      <p>
+        <strong>Origen:</strong> Fredonia, Antioquia<br>
+        <strong>Altura:</strong> 1.880 m.s.n.m.<br>
+        <strong>Proceso:</strong> Honey<br>
+        <strong>Presentación:</strong> En grano
+      </p>
+        <span class="pre">$50.000</span>
+      <div class="qty">
+        <button onclick="changeQty(this,-1)">-</button>
+        <span class="count">0</span>
+        <button onclick="changeQty(this,1)">+</button>
+      </div>      
+    </div>
+
+  </div>
+</section>
+
+<section id="cremas" class="container">
+  <h2>Cremas de café</h2>
+    <div class="grid">
+
+    <!-- PRODUCTO TEMPLATE -->
+    <div class="card" data-name="Crema 290ml" data-price="25000">
+      <img src="crema290.png" alt="Crema 290ml" onclick="openModal(this.src)">
+      <span>Crema pequeña 290ml</span>
+      <p>
+        <strong>Origen:</strong> Fredonia, Antioquia<br>
+        <strong>Duración:</strong> 3 meses sin destapar<br>
+        <strong>Recomendación:</strong> Consumase fría<br>
+        *Una vez destapada, consumir en el menor tiempo posible
+      </p>
+        <span class="pre">$25.000</span>
+      <div class="qty">
+        <button onclick="changeQty(this,-1)">-</button>
+        <span class="count">0</span>
+        <button onclick="changeQty(this,1)">+</button>
+      </div>      
+    </div>
+
+    <div class="card" data-name="Crema 750ml" data-price="50000">
+      <img src="crema750.png" alt="Crema 750ml" onclick="openModal(this.src)">
+      <span>Crema mediana 750ml</span>
+      <p>
+        <strong>Origen:</strong> Fredonia, Antioquia<br>
+        <strong>Duración:</strong> 3 meses sin destapar<br>
+        <strong>Recomendación:</strong> Consumase fría<br>
+        *Una vez destapada, consumir en el menor tiempo posible
+      </p>
+        <span class="pre">$50.000</span>
+      <div class="qty">
+        <button onclick="changeQty(this,-1)">-</button>
+        <span class="count">0</span>
+        <button onclick="changeQty(this,1)">+</button>
+      </div>      
+    </div>
+
+    <div class="card" data-name="Crema litro" data-price="65000">
+      <img src="crema1000.png" alt="Crema litro" onclick="openModal(this.src)">
+      <span>Crema grande litro</span>
+      <p>
+        <strong>Origen:</strong> Fredonia, Antioquia<br>
+        <strong>Duración:</strong> 3 meses sin destapar<br>
+        <strong>Recomendación:</strong> Consumase fría<br>
+        *Una vez destapada, consumir en el menor tiempo posible
+      </p>
+        <span class="pre">$65.000</span>
+      <div class="qty">
+        <button onclick="changeQty(this,-1)">-</button>
+        <span class="count">0</span>
+        <button onclick="changeQty(this,1)">+</button>
+      </div>      
+    </div>
+
+  </div>
+</section>
+
+
+<div class="cart" id="cart">
+  <h3>Tu carrito</h3>
+  <div id="cart-items"></div>
+  <p class="cart-total">
+    Total: $<span  id="cart-total">0</span>
+  </p>
+  <button class="whatsapp" onclick="sendWhatsApp()">Pedir por WhatsApp</button>
+</div>
+
+<div class="modal" id="modal" onclick="this.style.display='none'">
+  <img id="modal-img">
+</div>
+
+<script>
+  let cart = {};
+
+  function toggleCart() {
+    const cartBox = document.getElementById('cart');
+    cartBox.style.display = cartBox.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function changeQty(btn, delta) {
+    const card = btn.closest('.card');
+    const name = card.dataset.name;
+    const price = parseInt(card.dataset.price);
+    const countEl = card.querySelector('.count');
+
+    let qty = parseInt(countEl.textContent) + delta;
+    if (qty < 0) qty = 0;
+    countEl.textContent = qty;
+
+    if (qty === 0) {
+      delete cart[name];
+    } else {
+      cart[name] = { qty, price };
+    }
+
+    renderCart();
+    updateBadge();
+  }
+
+  function removeItem(name) {
+    delete cart[name];
+
+    // reset contador en la card
+    document.querySelectorAll('.card').forEach(card => {
+      if (card.dataset.name === name) {
+        card.querySelector('.count').textContent = 0;
+      }
+    });
+
+    renderCart();
+    updateBadge();
+  }
+
+  function renderCart() {
+    const itemsDiv = document.getElementById('cart-items');
+    const totalSpan = document.getElementById('cart-total');
+
+    itemsDiv.innerHTML = '';
+    let total = 0;
+
+    Object.keys(cart).forEach(name => {
+      const item = cart[name];
+      const subtotal = item.qty * item.price;
+      total += subtotal;
+
+      itemsDiv.innerHTML += `
+        <div class="cart-item">
+          <div>
+            <strong>${name}</strong><br>
+            ${item.qty} x $${item.price.toLocaleString('es-CO')}
+          </div>
+          <div>
+            $${subtotal.toLocaleString('es-CO')}
+            <button class="remove" onclick="removeItem('${name}')">X</button>
+          </div>
+        </div>
+      `;
+    });
+
+    totalSpan.textContent = total.toLocaleString('es-CO');
+  }
+
+  function updateBadge() {
+    const badge = document.getElementById('cart-count');
+    let count = 0;
+
+    Object.values(cart).forEach(item => {
+      count += item.qty;
+    });
+
+    badge.textContent = count;
+    badge.style.display = count > 0 ? 'flex' : 'none';
+  }
+
+  function sendWhatsApp() {
+    if (Object.keys(cart).length === 0) {
+      alert('Tu carrito está vacío');
+      return;
+    }
+
+    let text = 'Hola, quiero pedir:%0A';
+    let total = 0;
+
+    Object.keys(cart).forEach(name => {
+      const item = cart[name];
+      const subtotal = item.qty * item.price;
+      total += subtotal;
+
+      text += `- ${name} (${item.qty} x $${item.price.toLocaleString('es-CO')}) = $${subtotal.toLocaleString('es-CO')}%0A`;
+    });
+
+    text += `%0A*Total: $${total.toLocaleString('es-CO')}*`;
+
+    window.open(
+      `https://wa.me/573502823060?text=${text}`,
+      '_blank'
+    );
+  }
+
+  function openModal(src) {
+    document.getElementById('modal-img').src = src;
+    document.getElementById('modal').style.display = 'flex';
+  }
+</script>
+
+
+</body>
+</html>
