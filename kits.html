@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exalto | cafés de origen</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exalto | Kit cafetero</title>
 
   <style>
     :root {
@@ -146,11 +146,11 @@
     }
 
 
+
     .card img {
       border-radius: 12px;
       cursor: pointer;
-      max-height: 280px;
-      align-items: center;
+      max-height: 300px;
     }
 
 
@@ -262,21 +262,19 @@
 </header>
 
 
-<section class="container">
-  <h2>Cafés</h2>
+<section id="kits" class="container">
+  <h2>Kits cafeteros</h2>
     <div class="grid">
 
     <!-- PRODUCTO TEMPLATE -->
-    <div class="card" data-name="Café 250g molido" data-price="26000">
-      <img src="cafe250molido.png" alt="Café 250g" onclick="openModal(this.src)">
-      <span>Café 250g molido</span>
+    <div class="card" data-name="coffee lover italiano" data-price="120000">
+      <img src="coffeeloverita.png" alt="coffee lover italiano" onclick="openModal(this.src)">
+      
       <p>
-        <strong>Origen:</strong> Fredonia, Antioquia<br>
-        <strong>Altura:</strong> 1.880 m.s.n.m.<br>
-        <strong>Proceso:</strong> Honey<br>
-        <strong>Presentación:</strong> Molido
+        <strong>🎁Adiciones:</strong> Detalle sorpresa<br>
+        <strong>🛵Envío:</strong> Gratis Área metropolitana
       </p>
-        <span class="pre">$26.000</span>
+        <span class="pre">$120.000</span>
       <div class="qty">
         <button onclick="changeQty(this,-1)">-</button>
         <span class="count">0</span>
@@ -284,16 +282,13 @@
       </div>      
     </div>
 
-    <div class="card" data-name="Café 250g grano" data-price="26000">
-      <img src="cafe250grano.png" alt="Café 250g" onclick="openModal(this.src)">
-      <span>Café 250g en grano</span>
+    <div class="card" data-name="coffee lover francés" data-price="98000">
+      <img src="coffeeloverfr.png" alt="coffee lover francés" onclick="openModal(this.src)">
       <p>
-        <strong>Origen:</strong> Fredonia, Antioquia<br>
-        <strong>Altura:</strong> 1.880 m.s.n.m.<br>
-        <strong>Proceso:</strong> Honey<br>
-        <strong>Presentación:</strong> En grano
+        <strong>🎁Adiciones:</strong> Detalle sorpresa<br>
+        <strong>🛵Envío:</strong> Gratis Área metropolitana
       </p>
-        <span class="pre">$26.000</span>
+        <span class="pre">$98.000</span>
       <div class="qty">
         <button onclick="changeQty(this,-1)">-</button>
         <span class="count">0</span>
@@ -301,16 +296,13 @@
       </div>      
     </div>
 
-    <div class="card" data-name="Café 500g molido" data-price="50000">
-      <img src="cafe250molido.png" alt="Café 500g" onclick="openModal(this.src)">
-      <span>Café 500g molido</span>
+    <div class="card" data-name="Experto italiano" data-price="150000">
+      <img src="expertoita.png" alt="Experto italiano" onclick="openModal(this.src)">
       <p>
-        <strong>Origen:</strong> Fredonia, Antioquia<br>
-        <strong>Altura:</strong> 1.880 m.s.n.m.<br>
-        <strong>Proceso:</strong> Honey<br>
-        <strong>Presentación:</strong> Molido
+        <strong>🎁Adiciones:</strong> Detalle sorpresa<br>
+        <strong>🛵Envío:</strong> Gratis Área metropolitana
       </p>
-        <span class="pre">$50.000</span>
+        <span class="pre">$150.000</span>
       <div class="qty">
         <button onclick="changeQty(this,-1)">-</button>
         <span class="count">0</span>
@@ -318,16 +310,13 @@
       </div>      
     </div>
 
-    <div class="card" data-name="Café 500g grano" data-price="50000">
-      <img src="cafe250grano.png" alt="Café 500g" onclick="openModal(this.src)">
-      <span>Café 500g en grano</span>
+    <div class="card" data-name="Experto francés" data-price="130000">
+      <img src="expertofr.png" alt="Experto francés" onclick="openModal(this.src)">
       <p>
-        <strong>Origen:</strong> Fredonia, Antioquia<br>
-        <strong>Altura:</strong> 1.880 m.s.n.m.<br>
-        <strong>Proceso:</strong> Honey<br>
-        <strong>Presentación:</strong> En grano
+        <strong>🎁Adiciones:</strong> Detalle sorpresa<br>
+        <strong>🛵Envío:</strong> Gratis Área metropolitana
       </p>
-        <span class="pre">$50.000</span>
+        <span class="pre">$130.000</span>
       <div class="qty">
         <button onclick="changeQty(this,-1)">-</button>
         <span class="count">0</span>
@@ -335,58 +324,13 @@
       </div>      
     </div>
 
-  </div>
-</section>
-
-<section id="cremas" class="container">
-  <h2>Cremas de café</h2>
-    <div class="grid">
-
-    <!-- PRODUCTO TEMPLATE -->
-    <div class="card" data-name="Crema 290ml" data-price="25000">
-      <img src="crema290.png" alt="Crema 290ml" onclick="openModal(this.src)">
-      <span>Crema pequeña 290ml</span>
+    <div class="card" data-name="Cóctel Irlandés" data-price="90000">
+      <img src="coctel.png" alt="Cóctel Irlandés" onclick="openModal(this.src)">
       <p>
-        <strong>Origen:</strong> Fredonia, Antioquia<br>
-        <strong>Duración:</strong> 3 meses sin destapar<br>
-        <strong>Recomendación:</strong> Consumase fría<br>
-        *Una vez destapada, consumir en el menor tiempo posible
+        <strong>🎁Adiciones:</strong> Detalle sorpresa<br>
+        <strong>🛵Envío:</strong> Gratis Área metropolitana
       </p>
-        <span class="pre">$25.000</span>
-      <div class="qty">
-        <button onclick="changeQty(this,-1)">-</button>
-        <span class="count">0</span>
-        <button onclick="changeQty(this,1)">+</button>
-      </div>      
-    </div>
-
-    <div class="card" data-name="Crema 750ml" data-price="50000">
-      <img src="crema750.png" alt="Crema 750ml" onclick="openModal(this.src)">
-      <span>Crema mediana 750ml</span>
-      <p>
-        <strong>Origen:</strong> Fredonia, Antioquia<br>
-        <strong>Duración:</strong> 3 meses sin destapar<br>
-        <strong>Recomendación:</strong> Consumase fría<br>
-        *Una vez destapada, consumir en el menor tiempo posible
-      </p>
-        <span class="pre">$50.000</span>
-      <div class="qty">
-        <button onclick="changeQty(this,-1)">-</button>
-        <span class="count">0</span>
-        <button onclick="changeQty(this,1)">+</button>
-      </div>      
-    </div>
-
-    <div class="card" data-name="Crema litro" data-price="65000">
-      <img src="crema1000.png" alt="Crema litro" onclick="openModal(this.src)">
-      <span>Crema grande litro</span>
-      <p>
-        <strong>Origen:</strong> Fredonia, Antioquia<br>
-        <strong>Duración:</strong> 3 meses sin destapar<br>
-        <strong>Recomendación:</strong> Consumase fría<br>
-        *Una vez destapada, consumir en el menor tiempo posible
-      </p>
-        <span class="pre">$65.000</span>
+        <span class="pre">$90.000</span>
       <div class="qty">
         <button onclick="changeQty(this,-1)">-</button>
         <span class="count">0</span>
