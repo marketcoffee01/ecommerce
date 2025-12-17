@@ -444,7 +444,7 @@
       return;
     }
 
-    let text = 'Hola, quiero pedir:%0A';
+    let text = 'Hola 👋%0AQuiero pedir:%0A';
     let total = 0;
 
     Object.keys(cart).forEach(name => {
@@ -458,7 +458,7 @@
     text += `%0A*Total: $${total.toLocaleString('es-CO')}*`;
 
     window.open(
-      `https://wa.me/573502823060?text=${text}`,
+      `https://wa.me/573502823060?text=${text}%0A%0A¿Me confirmas la disponibilidad por favor?`,
       '_blank'
     );
   }
@@ -472,3 +472,4 @@
 
 </body>
 </html>
+
