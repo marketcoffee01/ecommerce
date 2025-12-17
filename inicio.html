@@ -99,15 +99,18 @@
 
     .container {
       max-width: 1100px;
-      margin: 40px auto;
+      margin: 10px auto;
       padding: 0 20px;
+      display: grid;
+      place-items: center;
     }
 
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(10px, 0.1fr));
       gap: 20px;
+      place-items: center;
     }
 
     .card {
@@ -159,7 +162,6 @@
 
     header img {
       height: 60px;
-  
     }
 
     .testimonios-banner {
@@ -172,11 +174,12 @@
         align-items: center;
         justify-content: center;
         position: relative;
+        margin: 0px auto;
     }
     .testimonial-title {
         font-size: 1.8rem; /* Tamaño grande */
-        color: #0d577b; /* Color oscuro */
-        margin-bottom: 25px; /* Espacio debajo */
+        color: var(--color1); /* Color oscuro */
+        margin-bottom: 10px; /* Espacio debajo */
         font-weight: 600; /* Negrita media */
         text-align: center;
     }
@@ -216,23 +219,56 @@
      justify-content: center;   
      flex-direction: column;     /* 👈 CLAVE: uno debajo del otro */
      align-items: center;        /* Centra horizontal */
-     gap: 20px;    
+     gap: 2px;
+     margin: 0px 300px;
+    }
+
+    .cremas p{
+      font-size: 1.8rem; /* Tamaño grande */
+        color: var(--color1); /* Color oscuro */
+        margin-bottom: 10px; /* Espacio debajo */
+        font-weight: 600; /* Negrita media */
+        text-align: center;
     }
 
     .cremas img {
       cursor: pointer;
       border-radius: 16px;
       transition: transform 0.3s ease;
-      max-width: 90%;                /* Responsive */
-      height: auto;
+      max-width: 300px;                /* Responsive */
+      height: 300px;
+
     }
 
     .cremas img:hover {
       transform: scale(1.03);
     }
 
+    .buttons {
+      display: flex;              /* activa flex */
+      justify-content: center;    /* centra horizontal */
+      align-items: center;
+      gap: 16px;                  /* espacio entre botones */
+      margin: 30px auto;
+    }
 
+    .btn-ver {
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #0d577b, #088eb6);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(13, 87, 123, 0.3);
+      transition: all 0.3s ease;
+    }
 
+    /* Hover */
+    .btn-ver:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(13, 87, 123, 0.45);
+    }
 
   </style>
 </head>
@@ -253,13 +289,14 @@
 
 <section class="container">
 
-    <img src="logo_Exalto4.png" alt="Logo Exalto" class="logo" /> <!-- 🔹 Pega aquí tu ruta de logo -->
-
-  <!-- Frase emotiva -->
+  <img src="logo_Exalto4.png" alt="Logo Exalto" class="logo" />
   <h1>Exaltamos al caficultor colombiano, su esfuerzo y el arte detrás de cada café☕</h1>
-
 </section>
 
+<section class="buttons">
+  <a href="cafés.html" class="btn-ver">Ver cafés</a>
+  <a href="kits.html" class="btn-ver">Ver kits</a>
+</section>
 
 <!-- Testimonios -->
     <section>
@@ -276,7 +313,7 @@
     </section> 
 
     <section class="cremas">
-      <h1>Conoce nuestras cremas de temporada👇</h1>
+      <p>Conoce nuestras cremas de temporada👇</p>
      <a href="cafés.html#cremas">
      <img src="celebraciones.jpg" alt="Cremas de café">
       </a>
